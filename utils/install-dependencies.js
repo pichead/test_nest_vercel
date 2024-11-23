@@ -12,7 +12,8 @@ const modules = [
   'firebase-admin',
   'express',
   '@types/multer',
-  'winston'
+  'winston',
+  'winston-daily-rotate-file',
 ];
 
 const { exec } = require('child_process');
