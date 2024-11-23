@@ -6,8 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
-    "postinstall": "prisma generate",
+    "build": "npm run prisma:generate && nest build",
+    "postinstall": "prisma generate --schema=./src/prisma/schema.prisma",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -20,7 +20,9 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "vercel-build": "prisma generate && prisma migrate deploy && nest build"
+    "vercel-build": "npm run prisma:generate && nest build && cp -r src/prisma/generated/ dist/prisma/",
+    "prisma:migrate": "npx prisma migrate dev --schema=./src/prisma/schema.prisma --name init",
+    "prisma:generate": "npx prisma generate --schema=./src/prisma/schema.prisma"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.699.0",
