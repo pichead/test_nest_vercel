@@ -7,7 +7,7 @@ export const cors = [
 export const env = {
   appClientUrl: process.env.APP_CLIENT_URL,
   appฺฺBackofficeUrl: process.env.APP_BACKOFFICE_URL,
-  appPort: process.env.PORT ? process.env.PORT : 3333,
+  appPort: process.env.PORT ? parseInt(process.env.PORT) : 3333,
   cors: process.env.CORS_ORIGIN ? JSON.parse(process.env.CORS_ORIGIN) : [],
   appNameTH: process.env.APP_NAME_TH ? process.env.APP_NAME_TH : 'เว็บไซต์',
   appNameEN: process.env.APP_NAME_EN ? process.env.App_NAME_EN : 'Website',
