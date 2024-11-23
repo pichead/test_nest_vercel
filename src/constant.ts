@@ -1,4 +1,6 @@
 import { env } from "utils/constant";
 
 
-export const ENV = env
+export const ENV = {
+  appPort: 3333
+}
