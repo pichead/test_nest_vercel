@@ -1,4 +1,4 @@
-import { env } from "utils/constant";
+import { env } from "src/utils/constant";
 
 
 export const ENV = {
