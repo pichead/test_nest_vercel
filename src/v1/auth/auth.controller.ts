@@ -2,10 +2,15 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
+import { DatabaseService } from 'src/database/database';
+import { RES } from 'src/utils';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly db: DatabaseService
+  ) { }
 
   @Post()
   create(@Body() createAuthDto: CreateAuthDto) {
@@ -13,8 +18,13 @@ export class AuthController {
   }
 
   @Get()
-  findAll() {
-    return this.authService.findAll();
+  async findAll() {
+
+    const find = await this.db.user.findMany()
+    
+    return RES.ok(200, "success", "สำเร็จ", find)
+
+    // return this.authService.findAll();
   }
 
   @Get(':id')
