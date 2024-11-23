@@ -3,6 +3,9 @@ export const cors = [
 
 ]
 
+export const env2 = {
+  appPort: process.env.PORT ? parseInt(process.env.PORT) : 3333,
+}
 
 export const env = {
   appClientUrl: process.env.APP_CLIENT_URL,
