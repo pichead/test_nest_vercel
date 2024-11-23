@@ -5,6 +5,6 @@ import { DatabaseService } from 'src/database/database';
 
 @Module({
   controllers: [AuthController],
-  providers: [ AuthService],
+  providers: [DatabaseService, AuthService],
 })
 export class AuthModule { }
